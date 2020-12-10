@@ -1,19 +1,28 @@
 <ion-content>
     <form (submit)="doLogin()">
-        <div center-content style="display: flex" id="logo">
-            <img alt="" src="">
-        </div>
+        <ion-row class="ion-justify-content-center ion-flex-direction-column ion-padding">
+            <ion-item class="ion-margin-top" lines="none">
+                <img class="logo" [src]="logo">
+            </ion-item>
+        </ion-row>
 
-        <ion-item>
-            <ion-label position="floating">Usuario</ion-label>
-            <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="floating">Contrase&ntilde;a</ion-label>
-            <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
-        </ion-item>
-        <div>
+        <ion-row class="ion-justify-content-center ion-padding">
+            <ion-item lines="none">
+                <ion-label color="light" position="stacked">Usuario</ion-label>
+                <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
+            </ion-item>
+            <ion-item lines="none" class="ion-margin-top">
+                <ion-label color="light" position="stacked">Contrase&ntilde;a</ion-label>
+                <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+            </ion-item>
+        </ion-row>
+
+        <ion-row class="ion-justify-content-center">
+                <a [routerLink]="['/signup']" style="color:white;">Registrate !!!</a>
+        </ion-row>
+        <ion-row class="ion-justify-content-center ion-padding ">
             <ion-button type="submit" color="success">Entrar</ion-button>
-        </div>
+        </ion-row>
+
     </form>
 </ion-content>

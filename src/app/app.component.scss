@@ -1,3 +1,6 @@
+.ion-flex-direction-column {
+  flex-direction: column;
+}
 
 [flex] {
   display: flex;
@@ -24,4 +27,13 @@
 [center-content] {
   justify-content: center;
 }
+
+[main-color] {
+  color: #FFFFFF;
+}
+
+[md-font]{
+  font-size: 14px;
+}
+
 

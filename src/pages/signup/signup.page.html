@@ -1,22 +1,38 @@
+<ion-toolbar color="dark">
+    <ion-buttons slot="secondary">
+        <ion-button (click)="goTo('')">
+            <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+</ion-toolbar>
 <ion-content>
     <form (submit)="doSignup()">
 
-        <ion-item>
-            <ion-label position="floating">Usuario</ion-label>
-            <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="floating">Contrase&ntilde;a</ion-label>
-            <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
-        </ion-item>
+        <ion-row class="ion-justify-content-center ion-padding">
 
-        <ion-item>
-            <ion-label position="floating">Nombre</ion-label>
-            <ion-input type="text" [(ngModel)]="account.fullName" name="full-name"></ion-input>
-        </ion-item>
+            <ion-item lines="none" class="ion-margin-top">
+                <ion-label color="light" position="stacked">Full Name</ion-label>
+                <ion-input type="text" style="background: #e8f0fe" [(ngModel)]="account.fullName"
+                           name="name"></ion-input>
+            </ion-item>
 
-        <div>
-            <ion-button type="submit" color="success">Registrar</ion-button>
-        </div>
+            <ion-item lines="none">
+                <ion-label color="light" position="stacked">Usuario</ion-label>
+                <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none" class="ion-margin-top">
+                <ion-label color="light" position="stacked">Contrase&ntilde;a</ion-label>
+                <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+            </ion-item>
+
+        </ion-row>
+
+
+        <ion-row class="ion-justify-content-center ion-padding ">
+            <ion-button type="submit" color="success">Register</ion-button>
+        </ion-row>
+
     </form>
 </ion-content>

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {HeaderInfo} from '../../models/HeaderInfo';
 import {Identity} from '../../models/Indentity';
 import {IdentityService} from '../../services/identity.service';
+import {Router} from '@angular/router';
+import {Account} from '../../models/Account';
 
 @Component({
     selector: 'app-home',
@@ -9,11 +10,13 @@ import {IdentityService} from '../../services/identity.service';
     styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-    headerInfo: HeaderInfo;
     identity: Identity;
+    account: Account;
 
-    constructor(private identityService: IdentityService) {
+    constructor(private identityService: IdentityService, private router: Router) {
         this.identity = new Identity();
+        this.account = new Account();
+        this.account.isVerify = false;
         this.identity.first_name = 'Osmel';
         this.identity.last_name = 'Mojena Dubet';
         this.identity.country = 'Cuba';
@@ -23,6 +26,12 @@ export class HomePage implements OnInit {
 
     ngOnInit() {
         this.getDataIdentity();
+        console.log(localStorage.getItem('account'));
+
+    }
+
+    ionViewWillEnter() {
+        this.account.isVerify = localStorage.getItem('isVerify') === '1';
     }
 
     getDataIdentity() {
@@ -31,6 +40,10 @@ export class HomePage implements OnInit {
         }, error => {
 
         });
+    }
+
+    goTo(url) {
+        this.router.navigateByUrl(`/${url}`);
     }
 
 }

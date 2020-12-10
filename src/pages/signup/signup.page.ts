@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Account} from '../../models/Account';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-signup',
@@ -9,7 +10,7 @@ import {Account} from '../../models/Account';
 export class SignupPage implements OnInit {
     account: Account;
 
-    constructor() {
+    constructor(private router: Router) {
         this.account = new Account();
     }
 
@@ -17,6 +18,11 @@ export class SignupPage implements OnInit {
     }
 
     doSignup() {
+        this.goTo('');
 
+    }
+
+    goTo(url) {
+        this.router.navigateByUrl(`/${url}`);
     }
 }

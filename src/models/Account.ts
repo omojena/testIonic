@@ -3,4 +3,5 @@ export class Account {
   username: string;
   password: string;
   fullName: string;
+  isVerify: string | boolean;
 }
