@@ -10,11 +10,15 @@
 
 }
 
-ion-content {
-  --ion-background-color: #111D12;
+
+ion-item{
+  --background: #3880ff;
+  --color: #fff;
+}
+ion-button#login{
+  --background: #062f77;
 }
 
-ion-input {
-  --padding-end: 5px;
-  --padding-start: 5px;
+a{
+  color: #fff;
 }

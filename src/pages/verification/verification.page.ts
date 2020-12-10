@@ -25,16 +25,36 @@ export class VerificationPage implements OnInit {
 
     sendVerification() {
         localStorage.setItem('isVerify', '1');
-        // const data = {
-        //     country_code: this.countryCode,
-        //     card_code: this.cardCode,
-        //     scan_image_base64: [this.scanImageBase64Front, this.scanImageBase64Back]
-        // };
-        // this.identity.verifyIdentity(data).subscribe(value => {
-        //
-        // }, error => {
-        //
-        // });
+        const data = {
+            country_code: this.countryCode,
+            card_code: this.cardCode,
+            scan_image_base64: this.scanImageBase64Back
+        };
+        this.identity.verifyIdentity(data).subscribe(value => {
+            if (value.Status === 'Success') {
+                const result = value.data.MRZdata;
+                const user = JSON.parse(localStorage.getItem('user'));
+                user.isVerify = true;
+                localStorage.setItem('user', JSON.stringify(user));
+
+                this.saveOrUpdateVerification(result);
+            }
+            console.log(value);
+        }, error => {
+            console.log(error);
+        });
+    }
+
+    saveOrUpdateVerification(identity) {
+        this.identity.saveIdentity(identity).subscribe(value => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            user.isVerify = true;
+            localStorage.setItem('user', JSON.stringify(user));
+            this.identity.updateUserVerify(user, user.id);
+            console.log(value);
+        }, error => {
+            console.log(error);
+        });
     }
 
     takeFrontPicture() {

@@ -10,12 +10,10 @@ import {Account} from '../../models/Account';
     styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-    identity: Identity;
-    account: Account;
+    identity: Identity = new Identity();
+    account: Account = new Account();
 
     constructor(private identityService: IdentityService, private router: Router) {
-        this.identity = new Identity();
-        this.account = new Account();
         this.account.isVerify = false;
         this.identity.first_name = 'Osmel';
         this.identity.last_name = 'Mojena Dubet';
@@ -25,17 +23,17 @@ export class HomePage implements OnInit {
     }
 
     ngOnInit() {
-        this.getDataIdentity();
         console.log(localStorage.getItem('account'));
 
     }
 
     ionViewWillEnter() {
-        this.account.isVerify = localStorage.getItem('isVerify') === '1';
+        this.account = JSON.parse(localStorage.getItem('user'));
+        this.getDataIdentity(this.account.id);
     }
 
-    getDataIdentity() {
-        this.identityService.getIdentity().subscribe(value => {
+    getDataIdentity(id) {
+        this.identityService.getIdentity(id).subscribe(value => {
             this.identity = value;
         }, error => {
 

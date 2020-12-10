@@ -2,6 +2,15 @@ ion-item {
   margin: 15px 0;
 }
 
+.avatar{
+  border-radius: 80%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+}
+
 ion-icon {
   &.big {
     width: 50px;

@@ -7,6 +7,12 @@
     <ion-title>Pagina Prncipal</ion-title>
 </ion-toolbar>
 <ion-content>
+    <ion-row class="ion-justify-content-center" *ngIf="account.isVerify && identity.face_image">
+        <ion-item lines="none">
+            <img class="avatar" [src]="identity.face_image">
+        </ion-item>
+    </ion-row>
+
     <ion-row *ngIf="account.isVerify">
         <ion-list class="ion-padding ion-margin-top">
             <ion-item>

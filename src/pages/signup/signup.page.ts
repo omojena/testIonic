@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Account} from '../../models/Account';
 import {Router} from '@angular/router';
+import {IdentityService} from "../../services/identity.service";
 
 @Component({
     selector: 'app-signup',
@@ -8,17 +9,23 @@ import {Router} from '@angular/router';
     styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
-    account: Account;
+    account: Account = new Account();
+    rePassword: string;
 
-    constructor(private router: Router) {
-        this.account = new Account();
+    constructor(private identity: IdentityService, private router: Router) {
+
     }
 
     ngOnInit() {
     }
 
     doSignup() {
-        this.goTo('');
+        this.identity.register(this.account).subscribe(value => {
+            console.log(value);
+            this.goTo('');
+        }, error => {
+            console.log(error);
+        });
 
     }
 

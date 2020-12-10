@@ -1,5 +1,5 @@
 export class Identity {
-    'mrz': string;
+    'MRZ': string;
     'document_type': string;
     'country': string;
     'last_name': string;
@@ -23,4 +23,5 @@ export class Identity {
     'result': string;
     'details': string;
     'face_image': string;
+    'userId': string;
 }
