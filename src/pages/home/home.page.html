@@ -1,0 +1,43 @@
+<ion-toolbar color="dark">
+    <ion-buttons slot="primary">
+        <ion-button color="danger" (click)="goTo('')">
+            <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <ion-title>Pagina Prncipal</ion-title>
+</ion-toolbar>
+<ion-content>
+    <ion-row class="ion-justify-content-center" *ngIf="account.isVerify && identity.face_image">
+        <ion-item lines="none">
+            <img class="avatar" [src]="identity.face_image">
+        </ion-item>
+    </ion-row>
+
+    <ion-row *ngIf="account.isVerify">
+        <ion-list class="ion-padding ion-margin-top">
+            <ion-item>
+                <ion-label><span>First Name: </span>{{identity.first_name}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label><span>Last Name: </span>{{identity.last_name}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label><span>Country: </span>{{identity.country}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label><span>Date of Birth: </span>{{identity.date_of_birth}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label><span>Sex: </span>{{identity.sex}}</ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-row>
+    <div class="ion-margin-top-warning" *ngIf="!account.isVerify">
+        <ion-row class="ion-justify-content-center">
+            <ion-icon class="bigger warning" name="alert-circle-outline"></ion-icon>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+            <ion-button fill="outline" color="warning" (click)="goTo('verification')">Verification Pending</ion-button>
+        </ion-row>
+    </div>
+</ion-content>

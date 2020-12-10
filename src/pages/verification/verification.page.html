@@ -1,0 +1,62 @@
+<ion-toolbar color="dark">
+    <ion-buttons slot="secondary">
+        <ion-button (click)="goTo('home')">
+            <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <ion-title>Verificar Identidad</ion-title>
+    <ion-buttons slot="primary">
+        <ion-button color="danger" (click)="goTo('')">
+            <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+
+</ion-toolbar>
+<ion-content>
+
+    <form (submit)="sendVerification()">
+        <ion-grid>
+            <ion-row class="ion-justify-content-center">
+                <ion-col class="ion-align-self-center" size="12">
+                    <div class="ion-padding">
+                        <ion-item>
+                            <ion-input name="country" [(ngModel)]="countryCode" type="text" placeholder="Country Code" ngModel
+                                       required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input name="card" [(ngModel)]="cardCode" type="text" placeholder="Card Code"
+                                       ngModel required></ion-input>
+                        </ion-item>
+                    </div>
+                    <ion-row class="ion-justify-content-center ion-flex-direction-column ion-padding">
+                        <ion-button (click)="takeFrontPicture()" expand="block" shape="round" class="ion-margin-top">
+                            <ion-icon name="camera-outline"></ion-icon>
+                            Take Front
+                            Picture
+                        </ion-button>
+                        <ion-item *ngIf="scanImageBase64Front" class="ion-margin-top">
+                            <img class="take-picture" [src]="scanImageBase64Front">
+                        </ion-item>
+                    </ion-row>
+                    <ion-row class="ion-justify-content-center ion-flex-direction-column ion-padding">
+                        <ion-button (click)="takeBackPicture()" expand="block" shape="round" class="ion-margin-top">
+                            <ion-icon name="camera-outline"></ion-icon>
+                            Take
+                            Back Picture
+                        </ion-button>
+                        <ion-item *ngIf="scanImageBase64Back" class="ion-margin-top">
+                            <img class="take-picture" [src]="scanImageBase64Back">
+                        </ion-item>
+                    </ion-row>
+
+
+                    <div class="ion-padding">
+                        <ion-button id="register" type="submit" expand="block">
+                            Send Verification
+                        </ion-button>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>

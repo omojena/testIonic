@@ -1,0 +1,24 @@
+
+.logo {
+  margin-top: 80px;
+  border-radius: 80%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+
+}
+
+
+ion-item{
+  --background: #3880ff;
+  --color: #fff;
+}
+ion-button#login{
+  --background: #062f77;
+}
+
+a{
+  color: #fff;
+}
