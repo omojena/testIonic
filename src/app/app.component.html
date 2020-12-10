@@ -1,27 +1,3 @@
 <ion-app>
-    <ion-header *ngIf="headerInfo">
-        <ion-grid>
-            <ion-row><p></p></ion-row>
-            <ion-row>
-                <ion-col class="ion-align-self-start" size="2" (click)="headerLeft()" tappable>
-                    <ion-button class="header-btn disable-ripple disable-hover no-padding" clear expand="full" icon-start
-                            *ngIf="!loadingOrAlerting && headerInfo.leftAction">
-                        <i-feather style="color: #f53d3d !important;" name="{{headerInfo.leftIcon}}"></i-feather>
-                    </ion-button>
-                </ion-col>
-                <ion-col class="ion-align-self-center" (click)="headerCenter()" (press)="headerCenterPressAction()" size="8"
-                         tappable>
-                    <h1 [innerHTML]="headerInfo.centerText | titlecase" lg-font light-color
-                        style="font-weight: normal;margin-top: 3px"></h1>
-                </ion-col>
-                <ion-col class="ion-align-self-end" (click)="headerRight()" tappable>
-                    <ion-button class="header-btn disable-ripple disable-hover no-padding" clear expand="full" icon-end
-                            *ngIf="!loadingOrAlerting && headerInfo.rightAction">
-                        <i-feather name="{{headerInfo.rightIcon}}"></i-feather>
-                    </ion-button>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </ion-header>
     <ion-router-outlet></ion-router-outlet>
 </ion-app>

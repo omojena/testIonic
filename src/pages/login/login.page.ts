@@ -10,6 +10,7 @@ export class LoginPage implements OnInit {
     account: Account;
 
     constructor() {
+        this.account = new Account();
     }
 
     ngOnInit() {
