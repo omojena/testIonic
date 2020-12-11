@@ -24,7 +24,6 @@ export class VerificationPage implements OnInit {
     }
 
     sendVerification() {
-        localStorage.setItem('isVerify', '1');
         const data = {
             country_code: this.countryCode,
             card_code: this.cardCode,
@@ -36,11 +35,12 @@ export class VerificationPage implements OnInit {
                 const user = JSON.parse(localStorage.getItem('user'));
                 user.isVerify = true;
                 localStorage.setItem('user', JSON.stringify(user));
-
                 this.saveOrUpdateVerification(result);
             }
+            this.goTo('home');
             console.log(value);
         }, error => {
+            this.goTo('home');
             console.log(error);
         });
     }
