@@ -9,15 +9,18 @@ import {IdentityService} from '../../services/identity.service';
     styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-    account: Account = new Account();
-    logo: string;
 
     constructor(private identity: IdentityService, private router: Router) {
     }
+    account: Account = new Account();
+    logo: string;
+
+   ionViewWillEnter() {
+        localStorage.setItem('is_auth', '0');
+    }
 
     ngOnInit() {
-        this.logo = 'http://lorempixel.com/400/200';
-        localStorage.setItem('isVerify', '0');
+
     }
 
     doLogin() {

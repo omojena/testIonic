@@ -7,6 +7,15 @@
     <ion-title>Pagina Prncipal</ion-title>
 </ion-toolbar>
 <ion-content>
+    <div class="ion-margin-top-warning" *ngIf="!account.isVerify">
+        <ion-row class="ion-justify-content-center">
+            <ion-icon class="bigger warning" name="alert-circle-outline"></ion-icon>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+            <ion-button fill="outline" color="warning" (click)="goTo('verification')">Verification Pending</ion-button>
+        </ion-row>
+    </div>
+
     <ion-row class="ion-justify-content-center" *ngIf="account.isVerify && identity.face_image">
         <ion-item lines="none">
             <img class="avatar" [src]="identity.face_image">
@@ -32,12 +41,27 @@
             </ion-item>
         </ion-list>
     </ion-row>
-    <div class="ion-margin-top-warning" *ngIf="!account.isVerify">
-        <ion-row class="ion-justify-content-center">
-            <ion-icon class="bigger warning" name="alert-circle-outline"></ion-icon>
+    <div *ngIf="!account.isVerify">
+        <ion-row class="ion-justify-content-center" *ngIf="!account.isVerify && !identity.face_image">
+            <ion-item lines="none">
+                <ion-skeleton-text animated class="avatar" slot="start"></ion-skeleton-text>
+            </ion-item>
         </ion-row>
-        <ion-row class="ion-justify-content-center">
-            <ion-button fill="outline" color="warning" (click)="goTo('verification')">Verification Pending</ion-button>
-        </ion-row>
+            <ion-item>
+                <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+            </ion-item>
+            <ion-item>
+                <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+            </ion-item>
+            <ion-item>
+                <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+            </ion-item>
+            <ion-item>
+                <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+            </ion-item>
+            <ion-item>
+                <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+            </ion-item>
     </div>
+
 </ion-content>
